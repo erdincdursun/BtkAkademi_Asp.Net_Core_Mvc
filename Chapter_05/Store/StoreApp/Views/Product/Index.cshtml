@@ -1,0 +1,21 @@
+@{
+    Layout = "_Layout";
+}
+@model List<StoreApp.Models.Product>
+
+@section Footer{
+    <div>
+        Onyl for Index footer
+    </div>
+}
+
+@foreach (StoreApp.Models.Product product in Model)
+{
+    <h3>@product.ProductName</h3>
+    <p>@product.ProductId</p>
+    <p>
+        <a href="/Product/Get/@product.ProductId">Get Details </a>
+    </p>
+
+}
+
