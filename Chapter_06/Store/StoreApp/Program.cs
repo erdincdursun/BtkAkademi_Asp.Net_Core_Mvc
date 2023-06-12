@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using Repositories;
+using Repositories.Contracts;
 using StoreApp.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +12,9 @@ builder.Services.AddDbContext<RepositoryContext>(options =>
     b => b.MigrationsAssembly("StoreApp"));
 });
 
+builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
 var app = builder.Build();
 
